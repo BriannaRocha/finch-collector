@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/tots/tot-detail.css' %}"
 />
+<script defer src="{% static "js/tot-detail.js" %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -51,7 +61,7 @@
     </div>
     <h3>Add a Feeding</h3>
     <form 
-      action="{% url 'add-feeding' cat.id %}"
+      action="{% url 'add-feeding' tot.id %}"
       method='post'
       class='subsection-content'
       autocomplete='off'

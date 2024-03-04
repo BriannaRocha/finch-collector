@@ -9,4 +9,5 @@ urlpatterns = [
   path('tots/create/', views.TotCreate.as_view(), name='tot-create'),
   path('tots/<int:pk>/update/', views.TotUpdate.as_view(), name='tot-update'),
   path('tots/<int:pk>/delete/', views.TotDelete.as_view(), name='tot-delete'),
+  path('tots/<int:tot_id>/add-feeding/', views.add_feeding, name='add-feeding'),
 ]
