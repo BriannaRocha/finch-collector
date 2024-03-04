@@ -26,6 +26,10 @@
       <h2>An infant {{ tot.gender }} .</h2>
     {% endif %}
     <p>{{ tot.description }}</p>
+    <div class="cat-actions">
+      <a href="{% url 'tot-update' tot.id %}" class='btn warn'>Edit</a>
+      <a href="{% url 'tot-delete' tot.id %}" class='btn danger'>Delete</a>
+    </div>
   </div>
 </section>
 

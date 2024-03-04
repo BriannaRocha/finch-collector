@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Tot
 
 def home(request):
@@ -22,3 +22,11 @@ class TotCreate(CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+  
+class TotUpdate(UpdateView):
+  model = Tot
+  fields = ['age', 'gender', 'description']
+
+class TotDelete(DeleteView):
+  model = Tot
+  success_url = '/tots/'
