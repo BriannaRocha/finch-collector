@@ -1,5 +1,15 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+
+MEALS = (
+  ('B', 'Breakfast'),
+  ('L', 'Lunch'),
+  ('S', 'Snack'),
+  ('D', 'Dinner')
+)
+
+# Create your models here.
 
 class Tot(models.Model):
   name = models.CharField(max_length=100)
@@ -7,8 +17,26 @@ class Tot(models.Model):
   age = models.IntegerField()
   description = models.TextField(max_length=300)
 
-def __str__(self):
-    return self.name 
+  def __str__(self):
+    return self.name
+  
+  def get_absolute_url(self):
+    return reverse("tot-detail", kwargs={"tot_id": self.id})
+  
+  def fed_for_today(self):
+    return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
+  
+class Feeding(models.Model):
+  date = models.DateField('Feeding date')
+  meal = models.CharField(
+    max_length=1,
+    choices=MEALS,
+    default=MEALS[0][0]
+  )
+  tot = models.ForeignKey(Tot, on_delete=models.CASCADE)
 
-def get_absolute_url(self):
-    return reverse('tot-detail', kwargs={'tot_id': self.id})
+  def __str__(self):
+    return f"{self.get_meal_display()} on {self.date}"
+  
+  class Meta:
+    ordering = ['-date']
