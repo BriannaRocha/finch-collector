@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Tot
 
 def home(request):
@@ -14,3 +15,10 @@ def tot_index(request):
 def tot_detail(request, tot_id):
   tot = Tot.objects.get(id=tot_id)
   return render(request, 'tots/detail.html', { 'tot': tot })
+
+class TotCreate(CreateView):
+  model = Tot
+  fields = ['name', 'gender', 'age', 'description']
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)

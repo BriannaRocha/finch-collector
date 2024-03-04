@@ -6,4 +6,5 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('tots/', views.tot_index, name='tot-index'),
   path('tots/<int:tot_id>/', views.tot_detail, name='tot-detail'),
+  path('tots/create/', views.TotCreate.as_view(), name='tot-create'),
 ]
