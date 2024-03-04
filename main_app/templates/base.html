@@ -28,16 +28,16 @@
     <nav>
       <ul>
         {% if user.is_authenticated %}
-          <li><a href="{% url 'tiny-tot-index' %}">All Tiny Tots</a></li>
+          {% comment %} <li><a href="{% url 'tiny-tot-index' %}">All Tiny Tots</a></li>
           <li><a href="{% url 'toy-index' %}">All Toys</a></li>
           <li><a href="{% url 'tiny-tot-create' %}">Add a Tiny Tot</a></li>
-          <li><a href="{% url 'toy-create' %}">Add a Toy</a></li>
+          <li><a href="{% url 'toy-create' %}">Add a Toy</a></li> {% endcomment %}
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'home' %}">Login</a></li>
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% comment %} <li><a href="{% url 'signup' %}">Sign Up</a></li> {% endcomment %}
         {% endif %}
       </ul>
     </nav>
