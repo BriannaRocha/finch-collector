@@ -6,3 +6,7 @@ def home(request):
 
 def about(request):
   return render(request, 'about.html')
+
+def tot_index(request):
+  tots= Tot.objects.filter(user=request.user)
+  return render(request, 'tots/index.html', { 'tots': tots })
