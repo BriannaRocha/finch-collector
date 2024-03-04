@@ -22,6 +22,7 @@
 <section class="card-container">
   {% for tot in tots %}
     <div class="card">
+      <a href="{% url 'tot-detail' tot.id %}">
       <div class="card-content">
         <div class="card-img-container">
           <img 

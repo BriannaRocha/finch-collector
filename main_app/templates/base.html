@@ -29,11 +29,11 @@
       <ul>
         {% if user.is_authenticated %}
           <li><a href="{% url 'tot-index' %}">All Tiny Tots</a></li>
-          <li><a href="{% url 'toy-index' %}">All Toys</a></li>
-          <li><a href="{% url 'tot-create' %}">Add a Tiny Tot</a></li>
-          <li><a href="{% url 'toy-create' %}">Add a Toy</a></li>
+          {% comment %} <li><a href="{% url 'toy-index' %}">All Toys</a></li> {% endcomment %}
+          {% comment %} <li><a href="{% url 'tot-create' %}">Add a Tiny Tot</a></li> {% endcomment %}
+          {% comment %} <li><a href="{% url 'toy-create' %}">Add a Toy</a></li> {% endcomment %}
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'logout' %}">Log out</a></li>
+          {% comment %} <li><a href="{% url 'logout' %}">Log out</a></li> {% endcomment %}
         {% else %}
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'home' %}">Login</a></li>
