@@ -1,6 +1,5 @@
 from django.contrib import admin
-# import your models here
-from .models import Tot
+from .models import Tot, Feeding
 
-# Register your models here
 admin.site.register(Tot)
+admin.site.register(Feeding)
