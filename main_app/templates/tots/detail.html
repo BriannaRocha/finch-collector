@@ -21,8 +21,8 @@
 
 {% block content %}
 
-<section class="cat-container">
-  <div class="cat-img">
+<section class="tot-container">
+  <div class="tot-img">
     <img 
       src="{% static 'images/sk8r-boi-cat.svg' %}" 
       alt="A skater boy cat"
@@ -36,7 +36,7 @@
       <h2>An infant {{ tot.gender }} .</h2>
     {% endif %}
     <p>{{ tot.description }}</p>
-    <div class="cat-actions">
+    <div class="tot-actions">
       <a href="{% url 'tot-update' tot.id %}" class='btn warn'>Edit</a>
       <a href="{% url 'tot-delete' tot.id %}" class='btn danger'>Delete</a>
     </div>
