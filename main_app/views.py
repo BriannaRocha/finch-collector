@@ -16,10 +16,12 @@ def tot_index(request):
 
 def tot_detail(request, tot_id):
   tot = Tot.objects.get(id=tot_id)
+  toys_tot_doesnt_have = Toy.objects.exclude(id__in = tot.toys.all().values_list('id'))
   feeding_form = FeedingForm()
   return render(request, 'tots/detail.html', {
     'tot': tot,
-    'feeding_form': feeding_form
+    'feeding_form': feeding_form,
+    'toys': toys_tot_doesnt_have
   })
 
 class TotCreate(CreateView):
@@ -63,6 +65,6 @@ class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
 
-def assoc_toy(request, cat_id, toy_id):
+def assoc_toy(request, tot_id, toy_id):
   Tot.objects.get(id=tot_id).toys.add(toy_id)
   return redirect('tot-detail', tot_id=tot_id)
