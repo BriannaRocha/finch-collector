@@ -19,7 +19,7 @@ def about(request):
 
 @login_required
 def tot_index(request):
-  tots= Tot.objects.all()
+  tots= Tot.objects.filter(user=request.user)
   return render(request, 'tots/index.html', { 'tots': tots })
 
 @login_required
